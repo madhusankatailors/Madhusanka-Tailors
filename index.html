@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhusanka Tailor's</title>
+  <link rel="icon" href="images/hero/brandBadge.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="brand-badge">
+          <img src="images/hero/brandBadge.png" alt="Madhusanka Tailor's" />
+        </div>
+        <div>
+          <strong>Madhusanka Tailor's</strong>
+          <small>cloths made just for you - EST : 1994</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#gallery">Wedding Gallery</a>
+        <a href="#collections">Collections</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-panel hero-copy">
+          <div class="eyebrow">Premium tailoring for men</div>
+          <h1>Modern wedding suits with a perfect finish.</h1>
+          <p class="lead">
+            Madhusanka Tailor's creates stylish men's wedding suits, formal wear, leather and rexine shoes, and elegant
+            accessories. We also showcase our completed wedding outfits, customer reviews, and latest gallery work in
+            one place.
+          </p>
+
+          <div class="btns">
+            <a class="btn btn-primary" href="#" data-link="phone">Call Now</a>
+            <a class="btn btn-secondary" href="#" data-link="whatsapp">WhatsApp Us</a>
+            <a class="btn btn-secondary" href="#gallery">View Gallery</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>Wedding</strong>
+              <span>Custom groom suits, fitting support, and polished finishing.</span>
+            </div>
+            <div class="stat">
+              <strong>Shoes</strong>
+              <span>Modern leather and rexine shoe collections for special events.</span>
+            </div>
+            <div class="stat">
+              <strong>Accessories</strong>
+              <span>Ties, bow ties, cufflinks, belts, and matching styles.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="showcase">
+            <img class="showcase-photo" id="heroSliderImage" src="images/hero/hero.png" alt="Showroom cover"
+              data-fallback-label="Showroom cover" />
+
+            <div class="hero-slider-dots" id="heroSliderDots"></div>
+            <div class="showcase-text">
+              <span class="tag">Featured Brand Focus</span>
+              <h3>Madhusanka Tailor's</h3>
+              <p>Tailored wedding elegance with a modern Sri Lankan showroom feel.</p>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <div class="quick-box">
+              <strong>Showroom</strong>
+              <p>No.03, Supermarket Lane, Dankotuwa</p>
+            </div>
+            <div class="quick-box">
+              <strong>Direction</strong>
+              <p><a href="#" data-link="maps">Open Google Maps</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact">
+      <div class="container">
+        <div class="highlight-band reveal">
+          <div class="highlight-intro">
+            <div class="eyebrow">Why clients choose us</div>
+            <h2>Crafted with care for every special moment</h2>
+            <p>We blend premium tailoring, elegant styling, and friendly service to help every groom look sharp and feel
+              confident.</p>
+          </div>
+
+          <div class="highlight-grid">
+            <article class="highlight-item">
+              <strong>Perfect Fit</strong>
+              <span>Careful measurements and polished finishing for a clean, confident look.</span>
+            </article>
+            <article class="highlight-item">
+              <strong>Premium Styling</strong>
+              <span>From suit to shoes, every detail is selected to match beautifully.</span>
+            </article>
+            <article class="highlight-item">
+              <strong>Trusted Service</strong>
+              <span>Friendly guidance for weddings, receptions, and formal special moments.</span>
+            </article>
+            <article class="highlight-item">
+              <strong>Modern Collection</strong>
+              <span>Fresh designs, elegant accessories, and refined finishing all in one place.</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Wedding gallery</div>
+            <h2>Our completed wedding looks and memorable moments</h2>
+          </div>
+          <p>A beautiful gallery experience that highlights elegant styling, premium finishing, and wedding-day
+            confidence. Click any photo to open it in a new tab.</p>
+        </div>
+        <div class="wedding-slider card reveal">
+          <div class="slider-main">
+            <a id="sliderImageLink" class="slider-image-link" href="#" target="_blank" rel="noopener noreferrer"
+              aria-label="Open wedding gallery photo in a new tab">
+              <img id="sliderImage" src="" alt="Wedding gallery preview" />
+            </a>
+            <div class="slider-overlay">
+              <span class="tag">Wedding Highlight</span>
+              <h3 id="sliderTitle"></h3>
+              <p id="sliderText"></p>
+              <a id="sliderOpenLink" class="gallery-open-btn" href="#" target="_blank" rel="noopener noreferrer">Open
+                photo ↗</a>
+            </div>
+          </div>
+          <div class="slider-thumbs" id="sliderThumbs"></div>
+        </div>
+
+        <!-- <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="editor-note gallery-note">Tap any main gallery card to open its own wedding photo collection in a new tab. Later, you can replace those collection photos with your own images.</div>
+      </div> -->
+    </section>
+
+    <section class="section" id="collections">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">What we offer</div>
+            <h2>Elegant services crafted for the modern groom</h2>
+          </div>
+          <p>From tailored wedding wear to refined shoes and finishing accessories, every detail is selected to give you
+            a polished and confident look.</p>
+        </div>
+
+        <div class="grid-4">
+          <article class="feature reveal">
+            <div class="feature-icon">✦</div>
+            <span class="feature-tag">Signature tailoring</span>
+            <h3>Wedding Suits</h3>
+            <p>Premium groom suits with modern cuts, elegant finishing, and clean fitting for weddings, engagements, and
+              receptions.</p>
+            <div class="feature-list">
+              <span>Custom fitting</span>
+              <span>Modern cuts</span>
+            </div>
+            <div class="feature-note">Designed to make your big day look unforgettable.</div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">⌘</div>
+            <span class="feature-tag">Classic confidence</span>
+            <h3>Formal Menswear</h3>
+            <p>Blazers, trousers, waistcoats, shirts, and event-ready formalwear tailored for style, comfort, and
+              confidence.</p>
+            <div class="feature-list">
+              <span>Office to event</span>
+              <span>Smart styling</span>
+            </div>
+            <div class="feature-note">Perfect for parties, office functions, and special occasions.</div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">◈</div>
+            <span class="feature-tag">Premium footwear</span>
+            <h3>Leather & Rexine Shoes</h3>
+            <p>Elegant shoe collections that pair beautifully with wedding suits and formal looks while keeping a modern
+              finish.</p>
+            <div class="feature-list">
+              <span>Comfortable wear</span>
+              <span>Elegant finish</span>
+            </div>
+            <div class="feature-note">A polished final touch for your full outfit.</div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">★</div>
+            <span class="feature-tag">Finishing details</span>
+            <h3>Accessories</h3>
+            <p>Ties, bow ties, belts, cufflinks, and matching style pieces to complete a neat and luxurious appearance.
+            </p>
+            <div class="feature-list">
+              <span>Bow ties</span>
+              <span>Cufflinks & belts</span>
+            </div>
+            <div class="feature-note">Small details that elevate the entire look.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="accessories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Featured products</div>
+            <h2>Premium collections for modern wedding style</h2>
+          </div>
+          <p>Explore signature looks from tailored suits to footwear and accessories crafted to complete the perfect
+            outfit.</p>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="editor-note">
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Google reviews</div>
+            <h2>Customer trust and satisfaction</h2>
+          </div>
+          <p>Real customer appreciation helps new visitors feel confident when choosing Madhusanka Tailor's for their
+            special day.</p>
+        </div>
+        <div class="review-grid" id="reviewGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-card reveal">
+          <div class="eyebrow">Visit our showroom</div>
+          <h2>Madhusanka Tailor's</h2>
+          <p>Step into a stylish tailoring destination for elegant wedding suits, premium footwear, and refined
+            accessories for men.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>Address</strong>
+              <span>No.03 Supermarket Lane, Dankotuwa</span>
+            </div>
+            <div class="contact-item">
+              <strong>Call</strong>
+              <a href="#" data-link="phone">077 860 1003</a>
+            </div>
+            <div class="contact-item">
+              <strong>WhatsApp</strong>
+              <a href="#" data-link="whatsapp">077 490 3171</a>
+            </div>
+          </div>
+
+          <div class="btns">
+            <a class="btn btn-primary" href="#" data-link="maps">Get Directions</a>
+            <a class="btn btn-secondary" href="#" data-link="whatsapp">Chat on WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="map-card reveal">
+          <div class="eyebrow">Find us easily</div>
+          <h3 style="margin-bottom: 8px">Madhusanka Tailor's location</h3>
+          <p>Use the map below to quickly locate our shop in Dankotuwa and visit us for fittings, collections, and
+            wedding styling.</p>
+          <iframe title="Madhusanka Tailor's map preview"
+            src="https://www.google.com/maps?q=Madhusanka%20Tailor's%20Dankotuwa&z=17&output=embed" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="socials">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Social media</div>
+            <h2>Stay connected on every platform</h2>
+          </div>
+        </div>
+
+        <div class="social-grid">
+          <a class="social-card" href="https://www.facebook.com/profile.php?id=100064768060664&mibextid=wwXIfr&mibextid=wwXIfr" data-link="facebook">
+            <div class="social-icon">f</div>
+            <h3>Facebook</h3>
+            <p>Post showroom updates, customer looks, and new collections.</p>
+          </a>
+
+          <a class="social-card" href="https://www.instagram.com/madhusanka_tailors" data-link="instagram">
+            <div class="social-icon">◎</div>
+            <h3>Instagram</h3>
+            <p>Show premium visuals, reels, before-after styling, and wedding shots.</p>
+          </a>
+
+          <a class="social-card" href="https://www.tiktok.com/@madhusanka.tailor" data-link="tiktok">
+            <div class="social-icon">♪</div>
+            <h3>TikTok</h3>
+            <p>Share quick transformations, fitting videos, and fashion highlights.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div>
+            <div class="eyebrow">Book your fitting</div>
+            <h2>Ready to create your perfect wedding look?</h2>
+            <p>Visit our showroom or message us today for suit fittings, premium footwear, and complete groom styling
+              with confidence.</p>
+          </div>
+          <div class="btns">
+            <a class="btn btn-primary" href="#" data-link="phone">Call for an Appointment</a>
+            <a class="btn btn-secondary" href="#" data-link="whatsapp">Message on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div>© <span id="year"></span> Madhusanka Tailor's. All rights reserved.</div>
+      <div>No.03 Supermarket Lane, Dankotuwa · 077 860 1003 · WhatsApp 077 490 3171</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

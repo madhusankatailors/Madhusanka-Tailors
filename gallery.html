@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Madhusanka Tailor's Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0f1115;
+            --card: rgba(255, 255, 255, 0.06);
+            --line: rgba(255, 255, 255, 0.12);
+            --text: #f5f7fb;
+            --muted: #b8c0d1;
+            --gold: #d8b36a;
+            --gold-strong: #f2cf87;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(216, 179, 106, 0.2), transparent 28%),
+                radial-gradient(circle at top right, rgba(96, 123, 255, 0.14), transparent 18%),
+                linear-gradient(180deg, #0f1115 0%, #0b0d11 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(calc(100% - 32px), 1200px);
+            margin: 0 auto;
+            padding: 28px 0 42px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            color: var(--gold-strong);
+            font-weight: 700;
+        }
+
+        .page-shell,
+        .thumb-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .page-shell {
+            border-radius: var(--radius-xl);
+            padding: 22px;
+            overflow: hidden;
+        }
+
+        .eyebrow {
+            color: var(--gold-strong);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.1rem, 4vw, 3.2rem);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
+            align-items: stretch;
+            margin-bottom: 24px;
+        }
+
+        .hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px 4px;
+        }
+
+        .note {
+            display: inline-flex;
+            align-self: flex-start;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(216, 179, 106, 0.1);
+            border: 1px solid rgba(216, 179, 106, 0.18);
+            color: var(--gold-strong);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .hero-image {
+            min-height: 380px;
+            overflow: hidden;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #11161d;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: end;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .mini-help {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .thumb-card {
+            border-radius: var(--radius-lg);
+            padding: 12px;
+            cursor: pointer;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .thumb-card:hover,
+        .thumb-card.active {
+            transform: translateY(-4px);
+            border-color: rgba(216, 179, 106, 0.26);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+        }
+
+        .thumb-media {
+            height: 220px;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            background: #11161d;
+        }
+
+        .thumb-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumb-card h3 {
+            margin: 0 0 6px;
+            font-size: 18px;
+        }
+
+        .thumb-card p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 980px) {
+
+            .hero-grid,
+            .photo-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .hero-grid,
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <a class="back-link" href="index.html#gallery">← Back to Gallery</a>
+
+        <section class="page-shell">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow">Madhusanka Tailor's Gallery</div>
+                    <h1 id="mainTitle">Wedding Event Moments</h1>
+                    <p id="mainDesc">Explore a beautiful collection of wedding memories, tailored with elegance and style.</p>
+                    <span class="note">A curated collection of special occasions</span>
+                </div>
+
+                <div class="hero-image">
+                    <img id="mainPhoto" src="images/gallery/gallery01.JPG" alt="Wedding gallery preview" />
+                </div>
+            </div>
+
+            <div class="section-title">
+                <div>
+                    <div class="eyebrow">Gallery Collection</div>
+                    <h2>Explore More Photos</h2>
+                </div>
+                <div class="mini-help">Select any photo below to view it as the featured image.</div>
+            </div>
+
+            <div class="photo-grid" id="photoGrid"></div>
+        </section>
+    </main>
+
+    <script>
+        const galleryCollections = {
+            "bridal-party": {
+                title: "Distinguished Bridal Party",
+                description: "A graceful collection capturing the beauty and charm of the bridal party.",
+                help: "Browse the full bridal party collection below.",
+                photos: [
+                    {
+                        title: "Bridal Party Photo 01",
+                        image: "images/gallery/Dgallery01.JPG",
+                        desc: "A graceful wedding memory from the bridal party collection."
+                    },
+                    {
+                        title: "Bridal Party Photo 02",
+                        image: "images/gallery/Dgallery02.JPG",
+                        desc: "A stylish and elegant moment beautifully captured."
+                    },
+                    {
+                        title: "Bridal Party Photo 03",
+                        image: "images/gallery/Dgallery03.JPG",
+                        desc: "A memorable view from the bridal celebration."
+                    },
+                    {
+                        title: "Bridal Party Photo 04",
+                        image: "images/gallery/Dgallery04.JPG",
+                        desc: "Another lovely bridal party moment filled with elegance."
+                    },
+                    {
+                        title: "Bridal Party Photo 05",
+                        image: "images/gallery/Dgallery05.JPG",
+                        desc: "A refined and timeless wedding capture."
+                    },
+                    {
+                        title: "Bridal Party Photo 06",
+                        image: "images/gallery/Dgallery06.JPG",
+                        desc: "A beautiful finishing touch to this bridal party collection."
+                    }
+                ]
+            },
+            "summer-romance": {
+                title: "Summer Romance in Linen",
+                description: "A romantic and airy collection inspired by warm outdoor wedding moments.",
+                help: "Enjoy the full summer romance collection below.",
+                photos: [
+                    {
+                        title: "Summer Romance Photo 01",
+                        image: "images/gallery/Sgallery01.JPG",
+                        desc: "A charming outdoor wedding memory full of warmth and style."
+                    },
+                    {
+                        title: "Summer Romance Photo 02",
+                        image: "images/gallery/Sgallery02.JPG",
+                        desc: "A soft and romantic moment from a summer celebration."
+                    },
+                    {
+                        title: "Summer Romance Photo 03",
+                        image: "images/gallery/Sgallery03.JPG",
+                        desc: "An elegant capture of a beautiful wedding atmosphere."
+                    },
+                    {
+                        title: "Summer Romance Photo 04",
+                        image: "images/gallery/Sgallery04.JPG",
+                        desc: "A timeless scene filled with love and natural beauty."
+                    },
+                    {
+                        title: "Summer Romance Photo 05",
+                        image: "images/gallery/Sgallery05.JPG",
+                        desc: "A peaceful and graceful memory from the occasion."
+                    },
+                    {
+                        title: "Summer Romance Photo 06",
+                        image: "images/gallery/gallery02.JPG",
+                        desc: "A beautifully styled moment from the summer wedding collection."
+                    }
+                ]
+            },
+            "grooms-entrance": {
+                title: "The Groom's Entrance",
+                description: "A bold and elegant gallery celebrating the groom’s entrance and refined style.",
+                help: "View the full groom’s entrance collection below.",
+                photos: [
+                    {
+                        title: "Groom's Entrance Photo 01",
+                        image: "images/gallery/Tgallery01.JPG",
+                        desc: "A confident and stylish entrance captured in perfect detail."
+                    },
+                    {
+                        title: "Groom's Entrance Photo 02",
+                        image: "images/gallery/Tgallery02.JPG",
+                        desc: "An elegant moment highlighting the groom’s look and presence."
+                    },
+                    {
+                        title: "Groom's Entrance Photo 03",
+                        image: "images/gallery/Tgallery03.JPG",
+                        desc: "A memorable wedding scene with timeless sophistication."
+                    },
+                    {
+                        title: "Groom's Entrance Photo 04",
+                        image: "images/gallery/Tgallery04.JPG",
+                        desc: "A striking capture from the groom’s special moment."
+                    },
+                    {
+                        title: "Groom's Entrance Photo 05",
+                        image: "images/gallery/Tgallery05.JPG",
+                        desc: "A refined and polished wedding image from the entrance collection."
+                    },
+                    {
+                        title: "Groom's Entrance Photo 06",
+                        image: "images/gallery/Tgallery06.JPG",
+                        desc: "A powerful finishing image from the groom’s entrance story."
+                    }
+                ]
+            },
+            "heritage-style": {
+                title: "Heritage and Style",
+                description: "A rich collection blending cultural beauty, tradition, and timeless tailoring.",
+                help: "Discover the heritage and style collection below.",
+                photos: [
+                    {
+                        title: "Heritage Style Photo 01",
+                        image: "images/gallery/Pgallery01.JPG",
+                        desc: "A beautiful image showcasing tradition with elegance."
+                    },
+                    {
+                        title: "Heritage Style Photo 02",
+                        image: "images/gallery/Pgallery05.JPG",
+                        desc: "A refined heritage-inspired wedding moment."
+                    },
+                    {
+                        title: "Heritage Style Photo 03",
+                        image: "images/gallery/Pgallery06.JPG",
+                        desc: "A graceful and culturally rich photo from the event."
+                    },
+                    {
+                        title: "Heritage Style Photo 04",
+                        image: "images/gallery/Pgallery04.JPG",
+                        desc: "A timeless memory where style meets tradition."
+                    },
+                    {
+                        title: "Heritage Style Photo 05",
+                        image: "images/gallery/Pgallery03.JPG",
+                        desc: "A warm and elegant capture from the heritage collection."
+                    },
+                    {
+                        title: "Heritage Style Photo 06",
+                        image: "images/gallery/Pgallery02.JPG",
+                        desc: "A beautiful finishing image celebrating culture and craftsmanship."
+                    }
+                ]
+            },
+            "royal-indian-groom": {
+                title: "Royal Indian Groom",
+                description: "A regal gallery celebrating grand style, elegance, and royal wedding fashion.",
+                help: "Explore the royal Indian groom collection below.",
+                photos: [
+                    {
+                        title: "Royal Indian Groom Photo 01",
+                        image: "images/gallery/Rgallery01.JPG",
+                        desc: "A regal portrait capturing royal wedding elegance."
+                    },
+                    {
+                        title: "Royal Indian Groom Photo 02",
+                        image: "images/gallery/Rgallery02.JPG",
+                        desc: "A majestic wedding moment filled with sophistication."
+                    },
+                    {
+                        title: "Royal Indian Groom Photo 03",
+                        image: "images/gallery/Rgallery03.JPG",
+                        desc: "A rich and elegant image from the royal collection."
+                    },
+                    {
+                        title: "Royal Indian Groom Photo 04",
+                        image: "images/gallery/Rgallery04.JPG",
+                        desc: "A beautifully styled look inspired by royal tradition."
+                    },
+                    {
+                        title: "Royal Indian Groom Photo 05",
+                        image: "images/gallery/Rgallery05.JPG",
+                        desc: "A luxurious and memorable capture from the event."
+                    },
+                    {
+                        title: "Royal Indian Groom Photo 06",
+                        image: "images/gallery/Rgallery06.JPG",
+                        desc: "A grand closing image from the royal groom collection."
+                    }
+                ]
+            }
+        };
+
+        function placeholderSvg(label) {
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#1b212b" />
+              <stop offset="100%" stop-color="#0f1115" />
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="900" fill="url(#g)" />
+          <rect x="50" y="50" width="1100" height="800" rx="30" fill="none" stroke="#d8b36a" stroke-opacity="0.55" stroke-dasharray="14 10" />
+          <text x="50%" y="46%" fill="#f5f7fb" font-size="54" font-family="Arial, sans-serif" text-anchor="middle">${label}</text>
+          <text x="50%" y="54%" fill="#d8b36a" font-size="28" font-family="Arial, sans-serif" text-anchor="middle">Image preview unavailable</text>
+        </svg>
+      `)}`;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const collectionKey = params.get('collection') || 'bridal-party';
+        const selectedCollection = galleryCollections[collectionKey] || galleryCollections['bridal-party'];
+        const galleryPhotos = selectedCollection.photos;
+        const focusIndex = Math.max(0, Math.min(galleryPhotos.length - 1, Number(params.get('focus') || 0)));
+
+        const mainPhoto = document.getElementById('mainPhoto');
+        const mainTitle = document.getElementById('mainTitle');
+        const mainDesc = document.getElementById('mainDesc');
+        const photoGrid = document.getElementById('photoGrid');
+        const note = document.querySelector('.note');
+        const gridHeading = document.querySelector('.section-title h2');
+        const miniHelp = document.querySelector('.mini-help');
+
+        function applyFallback(img, label) {
+            const fallback = placeholderSvg(label);
+            img.addEventListener('error', () => {
+                img.src = fallback;
+            }, { once: true });
+        }
+
+        function setActive(index) {
+            const item = galleryPhotos[index] || galleryPhotos[0];
+            mainPhoto.src = item.image;
+            mainPhoto.alt = item.title;
+            mainTitle.textContent = item.title;
+            mainDesc.textContent = item.desc;
+            applyFallback(mainPhoto, item.title);
+
+            [...photoGrid.children].forEach((card, cardIndex) => {
+                card.classList.toggle('active', cardIndex === index);
+            });
+        }
+
+        if (note) {
+            note.textContent = selectedCollection.title;
+        }
+
+        if (gridHeading) {
+            gridHeading.textContent = `${selectedCollection.title} Gallery`;
+        }
+
+        if (miniHelp) {
+            miniHelp.textContent = selectedCollection.help || "Select a photo below to view more from this collection.";
+        }
+
+        photoGrid.innerHTML = galleryPhotos.map((item, index) => `
+      <button class="thumb-card" type="button" data-index="${index}" aria-label="Show ${item.title}">
+        <div class="thumb-media">
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+        </div>
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+      </button>
+    `).join('');
+
+        photoGrid.querySelectorAll('img').forEach((img) => {
+            applyFallback(img, img.alt || 'Gallery Photo');
+        });
+
+        photoGrid.querySelectorAll('.thumb-card').forEach((card) => {
+            card.addEventListener('click', () => {
+                setActive(Number(card.dataset.index));
+            });
+        });
+
+        setActive(focusIndex);
+    </script>
+</body>
+
+</html>
