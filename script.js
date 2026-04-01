@@ -68,14 +68,14 @@ const gallery = [
     title: "The Groom's Entrance",
     collection: "grooms-entrance",
     tag: "Grand Entrance",
-    image: "images/gallery/gallery03.jpg",
+    image: "images/gallery/gallery03.JPG",
     desc: "Step into the new chapter with confidence. Our signature navy suit offers an impeccable fit that makes a powerful statement on your walk toward the future."
   },
   {
     title: "Heritage and Style",
     collection: "heritage-style",
     tag: "Tradition & Style",
-    image: "images/gallery/gallery04.jpg",
+    image: "images/gallery/gallery04.JPG",
     desc: "Exquisite detailing for traditional and fusion ceremonies. We specialize in custom finishes and special occasion attire that honours heritage with a clean, modern aesthetic."
   },
 ];
