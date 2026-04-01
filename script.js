@@ -9,6 +9,39 @@ const siteConfig = {
   }
 };
 
+// Performance optimization: Lazy load images
+function setupLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px'
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+}
+
+// Debounce function to prevent excessive function calls
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
 
 const heroSlides = [
   {
@@ -78,9 +111,44 @@ const gallery = [
     image: "images/gallery/gallery04.JPG",
     desc: "Exquisite detailing for traditional and fusion ceremonies. We specialize in custom finishes and special occasion attire that honours heritage with a clean, modern aesthetic."
   },
+  {
+    title: "Summer Romance in Linen",
+    collection: "summer-romance",
+    tag: "Seasonal Style",
+    image: "images/gallery/gallery02.JPG",
+    desc: "Breezy elegance for warm-weather weddings. Our lightweight linen suits offer a relaxed yet refined look, keeping you cool and stylish as you celebrate your special day."
+  },
+  {
+    title: "Royal Indian Groom",
+    collection: "royal-indian-groom",
+    tag: "Cultural Elegance",
+    image: "images/gallery/gallery05.JPG",
+    desc: "A regal and culturally rich collection designed for the modern Indian groom, blending tradition with contemporary style."
+  },
+  {
+    title: "Green Groom Style",
+    collection: "green-groom-style",
+    tag: "Nature Inspired",
+    image: "images/gallery/gallery06.JPG",
+    desc: "A fresh and modern take on groom styling, featuring a sophisticated green suit that brings a touch of nature's elegance to your wedding day."
+  },
+  {
+    title: "Classic Black And White",
+    collection: "classic-black-white",
+    tag: "Timeless Elegance",
+    image: "images/gallery/gallery07.JPG",
+    desc: "A timeless collection of classic black and white suits, designed to exude sophistication and elegance for the discerning groom."
+  },
+  {
+    title: "Luxury Wedding Style",
+    collection: "luxury-wedding-style",
+    tag: "Premium Elegance",
+    image: "images/gallery/gallery08.JPG",
+    desc: "Experience the pinnacle of wedding styling with our luxury collection, featuring handcrafted details and premium fabrics."
+  }
 ];
 
-const sliderGallery = gallery.slice(0, 3);
+const sliderGallery = gallery.slice(0, 8);
 
 const reviews = [
   {
@@ -490,19 +558,66 @@ function initHeroSlider() {
   }, 3000);
 }
 
+function initTypingAnimation() {
+  const typingTitle = document.getElementById("typingTitle");
+  if (typingTitle) {
+    const text = typingTitle.textContent;
+    const words = text.split(" ");
+    
+    typingTitle.textContent = "";
+    
+    words.forEach((word, index) => {
+      setTimeout(() => {
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = word;
+        span.style.animationDelay = `0s`;
+        typingTitle.appendChild(span);
+        
+        // Add space between words (except after the last word)
+        if (index < words.length - 1) {
+          typingTitle.appendChild(document.createTextNode(" "));
+        }
+      }, index * 300);
+    });
+  }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   const year = document.getElementById("year");
   if (year) {
     year.textContent = new Date().getFullYear();
   }
 
+  // Critical path - render immediately
   applySiteLinks();
+  initTypingAnimation();
   renderProducts();
+  renderReviews();
   renderSlider();
   renderGallery();
-  renderReviews();
-  applyImageFallbacks();
+  
+  // Non-critical optimization
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      applyImageFallbacks();
+      setupLazyLoading();
+    });
+  } else {
+    applyImageFallbacks();
+    setupLazyLoading();
+  }
+
   initScrollReveal();
   initHeroSlider();
   initBackToTop();
 });
+
+// Optimize window events with debouncing
+window.addEventListener("resize", debounce(() => {
+  // Handle resize events efficiently
+}, 250), false);
+
+window.addEventListener("scroll", debounce(() => {
+  // Handle scroll events efficiently
+}, 250), false);

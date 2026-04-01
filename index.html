@@ -10,8 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="image" href="images/hero/brandBadge.png" />
+  <link rel="preload" as="image" href="images/hero/hero.png" />
+  <meta name="theme-color" content="#0f1115" />
+  <meta name="description" content="Premium tailoring for men - Modern wedding suits with perfect finish. Madhusanka Tailor's creates stylish wedding groom suits, formal wear, leather and rexine shoes, and elegant accessories." />
 </head>
 
 <body>
@@ -42,7 +46,7 @@
       <div class="container hero-grid">
         <div class="hero-panel hero-copy">
           <div class="eyebrow">Premium tailoring for men</div>
-          <h1>Modern wedding suits with a perfect finish.</h1>
+          <h1 class="typing-text" id="typingTitle">Modern wedding suits with a perfect finish.</h1>
           <p class="lead">
             Madhusanka Tailor's creates stylish men's wedding suits, formal wear, leather and rexine shoes, and elegant
             accessories. We also showcase our completed wedding outfits, customer reviews, and latest gallery work in
@@ -359,7 +363,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
